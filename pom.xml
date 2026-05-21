@@ -67,6 +67,19 @@
 			<artifactId>s3</artifactId>
 			<version>2.25.26</version>
 		</dependency>
+
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>dynamodb</artifactId>
+			<version>2.25.26</version>
+		</dependency>
+
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>sqs</artifactId>
+			<version>2.25.26</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

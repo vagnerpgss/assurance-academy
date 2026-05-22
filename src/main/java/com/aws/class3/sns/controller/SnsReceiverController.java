@@ -24,10 +24,12 @@ public class SnsReceiverController {
     @PostMapping
     public ResponseEntity<String> receive(@RequestBody String body) throws Exception {
 
+        log.info("Requisição recebida do SNS. Type: {}", body);
+
         JsonNode payload = objectMapper.readTree(body);
         String type = payload.get("Type").asText();
 
-        log.debug("Requisição recebida do SNS. Type: {}", type);
+        log.info("Requisição recebida do SNS. Type: {}", type);
 
         return switch (type) {
             case "SubscriptionConfirmation" -> ResponseEntity.ok(service.confirmSubscription(payload));

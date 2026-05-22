@@ -44,19 +44,11 @@ public class SnsReceiverService {
      */
     public String processNotification(JsonNode payload) {
 
-        String messageId = payload.get("MessageId").asText();
-        String subject = payload.has("Subject") ? payload.get("Subject").asText() : "(sem assunto)";
-        String message = payload.get("Message").asText();
-        String timestamp = payload.get("Timestamp").asText();
-
         log.info(" ");
         log.info("Novidade recebida do SNS!");
-        log.info("Message ID: {}", messageId);
-        log.info("Timestamp:  {}", timestamp);
-        log.info("Assunto:    {}", subject);
-        log.info("Mensagem:   {}", message);
+        log.info("Message ID: {}", payload.toString());
         log.info(" ");
 
-        return "Notification processed: " + messageId;
+        return "Notification processed: ";
     }
 }

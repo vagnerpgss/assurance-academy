@@ -1,4 +1,4 @@
-package com.aws.class3.dynamodb.config;
+package com.aws.class3.dynamo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ public class DynamoConfig {
     @Bean
     public DynamoDbClient dynamoDbClient() {
         return DynamoDbClient.builder()
-                .region(Region.SA_EAST_1)
+                .region(Region.US_EAST_2)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
     }

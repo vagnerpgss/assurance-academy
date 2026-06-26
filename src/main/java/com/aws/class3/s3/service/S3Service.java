@@ -16,7 +16,7 @@ public class S3Service {
     private final S3Client s3Client;
 
     private static final String BUCKET =
-            "assurance-demo-bucket-class4-312850678183-us-east-1-an";
+            "bucket-aws-class-4-447197207642-sa-east-1-an";
 
     public S3Service(S3Client s3Client) {
         this.s3Client = s3Client;

@@ -1,10 +1,10 @@
-package com.aws.class3.dynamodb.controller;
+package com.aws.class3.dynamo.controller;
 
-import com.aws.class3.dynamodb.service.DynamoService;
+import com.aws.class3.dynamo.service.DynamoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,10 +30,36 @@ public class DynamoController {
         return ResponseEntity.ok(service.find(id));
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(
-            @PathVariable String id
+    @PutMapping("/update")
+    public ResponseEntity<String> update(
+            @RequestParam String id,
+            @RequestParam String nome
     ) {
+        return ResponseEntity.ok(service.update(id, nome));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable String id) {
         return ResponseEntity.ok(service.delete(id));
+    }
+
+    @GetMapping("/query/{id}")
+    public ResponseEntity<List<Map<String, String>>> query(@PathVariable String id) {
+        return ResponseEntity.ok(service.query(id));
+    }
+
+    @GetMapping("/scan")
+    public ResponseEntity<List<Map<String, String>>> scan() {
+        return ResponseEntity.ok(service.scan());
+    }
+
+    @PostMapping("/batch-get")
+    public ResponseEntity<List<Map<String, String>>> batchGet(@RequestBody List<String> ids) {
+        return ResponseEntity.ok(service.batchGet(ids));
+    }
+
+    @PostMapping("/batch-write")
+    public ResponseEntity<String> batchWrite(@RequestBody List<Map<String, String>> itens) {
+        return ResponseEntity.ok(service.batchWrite(itens));
     }
 }

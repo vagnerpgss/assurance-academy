@@ -17,7 +17,7 @@ public class SnsService {
     private final SnsClient snsClient;
 
     private static final String TOPIC_ARN =
-            "arn:aws:sns:sa-east-1:447197207642:academia-aws-aula-8";
+            "arn:aws:sns:sa-east-1:447197207642:AWS-CLASS-SNS";
 
     public SnsService(SnsClient snsClient) {
         this.snsClient = snsClient;

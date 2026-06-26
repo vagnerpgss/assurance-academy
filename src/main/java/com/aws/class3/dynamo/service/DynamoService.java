@@ -24,7 +24,7 @@ public class DynamoService {
 
         Map<String, AttributeValue> item = new HashMap<>();
 
-        item.put("id", AttributeValue.builder().s(id).build());
+        item.put("assurance-partition-key", AttributeValue.builder().s(id).build());
         item.put("nome", AttributeValue.builder().s(nome).build());
 
         PutItemRequest request = PutItemRequest.builder()
@@ -40,7 +40,7 @@ public class DynamoService {
     public Map<String, String> find(String id) {
 
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().s(id).build());
+        key.put("assurance-partition-key", AttributeValue.builder().s(id).build());
 
         GetItemRequest request = GetItemRequest.builder()
                 .tableName(TABLE_NAME)
@@ -62,7 +62,7 @@ public class DynamoService {
     public String update(String id, String nome) {
 
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().s(id).build());
+        key.put("assurance-partition-key", AttributeValue.builder().s(id).build());
 
         Map<String, AttributeValueUpdate> updates = new HashMap<>();
         updates.put("nome", AttributeValueUpdate.builder()
@@ -84,7 +84,7 @@ public class DynamoService {
     public String delete(String id) {
 
         Map<String, AttributeValue> key = new HashMap<>();
-        key.put("id", AttributeValue.builder().s(id).build());
+        key.put("assurance-partition-key", AttributeValue.builder().s(id).build());
 
         DeleteItemRequest request = DeleteItemRequest.builder()
                 .tableName(TABLE_NAME)
@@ -99,11 +99,11 @@ public class DynamoService {
     public List<Map<String, String>> query(String id) {
 
         Map<String, AttributeValue> values = new HashMap<>();
-        values.put(":id", AttributeValue.builder().s(id).build());
+        values.put(":assurance-partition-key", AttributeValue.builder().s(id).build());
 
         QueryRequest request = QueryRequest.builder()
                 .tableName(TABLE_NAME)
-                .keyConditionExpression("id = :id")
+                .keyConditionExpression("assurance-partition-key = :assurance-partition-key")
                 .expressionAttributeValues(values)
                 .build();
 
@@ -128,7 +128,7 @@ public class DynamoService {
         List<Map<String, AttributeValue>> keys = new ArrayList<>();
         for (String id : ids) {
             Map<String, AttributeValue> key = new HashMap<>();
-            key.put("id", AttributeValue.builder().s(id).build());
+            key.put("assurance-partition-key", AttributeValue.builder().s(id).build());
             keys.add(key);
         }
 

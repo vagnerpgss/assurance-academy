@@ -1,17 +1,17 @@
-package com.aws.class3.dynamodb.config;
+package com.aws.class3.sns.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import software.amazon.awssdk.services.sns.SnsClient;
 
 @Configuration
-public class DynamoConfig {
+public class SnsConfig {
 
     @Bean
-    public DynamoDbClient dynamoDbClient() {
-        return DynamoDbClient.builder()
+    public SnsClient snsClient() {
+        return SnsClient.builder()
                 .region(Region.SA_EAST_1)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
